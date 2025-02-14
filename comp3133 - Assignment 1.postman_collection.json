@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "8190e49d-d856-4b08-b69d-be0236b2b715",
+		"name": "comp3133 - Assignment 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38151049"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"mutation { signup(username: \\\"testuser\\\", email: \\\"test@example.com\\\", password: \\\"password123\\\") { id username email } }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4040/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"query { login(email: \\\"test@example.com\\\", password: \\\"password123\\\") { token user { id username email } } }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4040/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWY0YzMxZDI4ZDU3MTg2ZTBjZDliYyIsImlhdCI6MTczOTU0MTU2NCwiZXhwIjoxNzM5NTQ1MTY0fQ.A45hzhb2EE1sTeuqccdEsTRLfHBqBe8tPhT4dRMsFec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"mutation { addEmployee(first_name: \\\"John\\\", last_name: \\\"Doe\\\", email: \\\"johndoe@example.com\\\", gender: \\\"Male\\\", designation: \\\"Software Engineer\\\", salary: 5000, date_of_joining: \\\"2024-01-01\\\", department: \\\"IT\\\", employee_photo: \\\"john.jpg\\\") { id first_name last_name email } }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4040/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllEmployees",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWY0YzMxZDI4ZDU3MTg2ZTBjZDliYyIsImlhdCI6MTczOTU0MTU2NCwiZXhwIjoxNzM5NTQ1MTY0fQ.A45hzhb2EE1sTeuqccdEsTRLfHBqBe8tPhT4dRMsFec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"query { getAllEmployees { id first_name last_name email designation } }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4040/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEmployeeById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWY0NGZlOGY4Yzk2MjlmMzM0MDQ0MSIsImlhdCI6MTczOTUzOTgwNiwiZXhwIjoxNzM5NTQzNDA2fQ.n7PHK5AldjW77JuTAvZTkfLx5pPF5SbM2UdsenWYeuQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"query { getEmployeeById(id: \\\"67af4c4dd28d57186e0cd9bf\\\") { first_name last_name email } }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4040/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWY0NGZlOGY4Yzk2MjlmMzM0MDQ0MSIsImlhdCI6MTczOTUzOTgwNiwiZXhwIjoxNzM5NTQzNDA2fQ.n7PHK5AldjW77JuTAvZTkfLx5pPF5SbM2UdsenWYeuQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"query { searchEmployee(designation: \\\"Software Engineer\\\") { first_name last_name designation department } }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4040/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWY0NGZlOGY4Yzk2MjlmMzM0MDQ0MSIsImlhdCI6MTczOTUzOTgwNiwiZXhwIjoxNzM5NTQzNDA2fQ.n7PHK5AldjW77JuTAvZTkfLx5pPF5SbM2UdsenWYeuQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"mutation { updateEmployee(id: \\\"67af4c4dd28d57186e0cd9bf\\\", salary: 6000, designation: \\\"Senior Engineer\\\") { id salary designation } }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4040/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWY0NGZlOGY4Yzk2MjlmMzM0MDQ0MSIsImlhdCI6MTczOTUzOTgwNiwiZXhwIjoxNzM5NTQzNDA2fQ.n7PHK5AldjW77JuTAvZTkfLx5pPF5SbM2UdsenWYeuQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"mutation { deleteEmployee(id: \\\"67af4c4dd28d57186e0cd9bf\\\") }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4040/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
